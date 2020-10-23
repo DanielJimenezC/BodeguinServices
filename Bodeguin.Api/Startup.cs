@@ -5,6 +5,7 @@ using Bodeguin.Infraestructure.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -39,8 +40,13 @@ namespace Bodeguin.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddOptions(Configuration);
+
             services.AddDbContext(Configuration);
+
             services.AddSwagger();
+
+            RegisterServices(services);
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -83,6 +89,11 @@ namespace Bodeguin.Api
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public static void RegisterServices(IServiceCollection services)
+        {
+            DependencyInjection.RegisterServices(services);
         }
     }
 }
