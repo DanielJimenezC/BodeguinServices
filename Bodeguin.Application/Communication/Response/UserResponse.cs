@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bodeguin.Application.Communication.Response
 {
-    public class LoginResponse
+    public class UserResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -14,6 +14,5 @@ namespace Bodeguin.Application.Communication.Response
         public string Password { get; set; }
         public string Direction { get; set; }
         public string Dni { get; set; }
-        public string Token { get; set; }
     }
 }

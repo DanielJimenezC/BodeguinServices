@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bodeguin.Application.Communication.Response
+namespace Bodeguin.Application.Communication.Request
 {
-    public class LoginResponse
+    public class UserUpdateRequest
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string FirstLastName { get; set; }
         public string SecondLastName { get; set; }
@@ -14,6 +13,5 @@ namespace Bodeguin.Application.Communication.Response
         public string Password { get; set; }
         public string Direction { get; set; }
         public string Dni { get; set; }
-        public string Token { get; set; }
     }
 }

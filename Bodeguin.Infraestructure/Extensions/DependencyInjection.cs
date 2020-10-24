@@ -36,6 +36,9 @@ namespace Bodeguin.Infraestructure.Extensions
             services.AddScoped<IVoucherRepository, VoucherRepository>();
 
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }

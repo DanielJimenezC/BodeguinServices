@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Bodeguin.Application.Communication.Request;
 using Bodeguin.Application.Interface;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bodeguin.Api.Controllers
@@ -23,7 +19,7 @@ namespace Bodeguin.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> SignIn(LoginRequest loginRequest)
+        public async Task<IActionResult> SignIn([FromBody] LoginRequest loginRequest)
         {
             var result = await _loginService.SignIn(loginRequest);
             if (!result.Valid)
@@ -33,7 +29,7 @@ namespace Bodeguin.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<IActionResult> SignUp(SignUpRequest signUpRequest)
+        public async Task<IActionResult> SignUp([FromBody] SignUpRequest signUpRequest)
         {
             var result = await _loginService.SignUp(signUpRequest);
             if (!result.Valid)
