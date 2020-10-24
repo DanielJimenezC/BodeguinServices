@@ -6,7 +6,7 @@ namespace Bodeguin.Domain.Common
 {
     public abstract class AuditableEntity
     {
-        public bool Active { get; set; }
+        public bool IsActive { get; set; }
         public DateTime CreateAt { get; set; }
         public DateTime ModifiedAt { get; set; }
     }

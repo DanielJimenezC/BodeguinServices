@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using AutoMapper;
+using Bodeguin.Application.Security;
 using Bodeguin.Infraestructure.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -47,6 +48,9 @@ namespace Bodeguin.Api
 
             RegisterServices(services);
 
+            var jwtOptions = Configuration.GetSection("JwtOptions");
+            services.Configure<JwtOptions>(jwtOptions);
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -57,9 +61,11 @@ namespace Bodeguin.Api
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:SecretKey"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Authentication:SecretKey"]))
                 };
             });
         }

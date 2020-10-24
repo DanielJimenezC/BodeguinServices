@@ -44,8 +44,8 @@ namespace Bodeguin.Infraestructure.Configuration
                 .HasColumnName("description")
                 .IsRequired();
 
-            builder.Property(t => t.Active)
-                .HasColumnName("active")
+            builder.Property(t => t.IsActive)
+                .HasColumnName("is_active")
                 .IsRequired();
 
             builder.Property(t => t.CreateAt)
