@@ -27,10 +27,6 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnName("active")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime>("CreateAt")
                         .HasColumnName("create_at")
                         .HasColumnType("timestamp without time zone");
@@ -40,6 +36,10 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnName("description")
                         .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnName("is_active")
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("modified_at")
@@ -107,13 +107,13 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnName("active")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime>("CreateAt")
                         .HasColumnName("create_at")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnName("is_active")
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("modified_at")
@@ -152,13 +152,13 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnName("active")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime>("CreateAt")
                         .HasColumnName("create_at")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnName("is_active")
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("modified_at")
@@ -183,10 +183,6 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnName("active")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("CategoryId")
                         .HasColumnName("category_id")
                         .HasColumnType("integer");
@@ -200,6 +196,10 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnName("description")
                         .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnName("is_active")
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("modified_at")
@@ -232,10 +232,6 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnName("active")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime>("CreateAt")
                         .HasColumnName("create_at")
                         .HasColumnType("timestamp without time zone");
@@ -251,6 +247,10 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnName("direction")
                         .HasColumnType("character varying(100)")
                         .HasMaxLength(100);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnName("is_active")
+                        .HasColumnType("boolean");
 
                     b.Property<float>("Latitude")
                         .HasColumnName("latitude")
@@ -289,10 +289,6 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnName("active")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime>("CreateAt")
                         .HasColumnName("create_at")
                         .HasColumnType("timestamp without time zone");
@@ -320,6 +316,10 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnName("first_lastname")
                         .HasColumnType("character varying(50)")
                         .HasMaxLength(50);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnName("is_active")
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnName("is_admin")
@@ -360,13 +360,13 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnName("active")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime>("CreateAt")
                         .HasColumnName("create_at")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnName("is_active")
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("modified_at")

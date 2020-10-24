@@ -14,7 +14,7 @@ namespace Bodeguin.Infraestructure.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    active = table.Column<bool>(nullable: false),
+                    is_active = table.Column<bool>(nullable: false),
                     create_at = table.Column<DateTime>(nullable: false),
                     modified_at = table.Column<DateTime>(nullable: false),
                     name = table.Column<string>(maxLength: 100, nullable: false),
@@ -32,7 +32,7 @@ namespace Bodeguin.Infraestructure.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    active = table.Column<bool>(nullable: false),
+                    is_active = table.Column<bool>(nullable: false),
                     create_at = table.Column<DateTime>(nullable: false),
                     modified_at = table.Column<DateTime>(nullable: false),
                     name = table.Column<string>(maxLength: 100, nullable: false)
@@ -48,7 +48,7 @@ namespace Bodeguin.Infraestructure.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    active = table.Column<bool>(nullable: false),
+                    is_active = table.Column<bool>(nullable: false),
                     create_at = table.Column<DateTime>(nullable: false),
                     modified_at = table.Column<DateTime>(nullable: false),
                     name = table.Column<string>(maxLength: 100, nullable: false),
@@ -69,7 +69,7 @@ namespace Bodeguin.Infraestructure.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    active = table.Column<bool>(nullable: false),
+                    is_active = table.Column<bool>(nullable: false),
                     create_at = table.Column<DateTime>(nullable: false),
                     modified_at = table.Column<DateTime>(nullable: false),
                     name = table.Column<string>(maxLength: 50, nullable: false),
@@ -92,7 +92,7 @@ namespace Bodeguin.Infraestructure.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    active = table.Column<bool>(nullable: false),
+                    is_active = table.Column<bool>(nullable: false),
                     create_at = table.Column<DateTime>(nullable: false),
                     modified_at = table.Column<DateTime>(nullable: false),
                     name = table.Column<string>(maxLength: 100, nullable: false),
@@ -117,7 +117,7 @@ namespace Bodeguin.Infraestructure.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    active = table.Column<bool>(nullable: false),
+                    is_active = table.Column<bool>(nullable: false),
                     create_at = table.Column<DateTime>(nullable: false),
                     modified_at = table.Column<DateTime>(nullable: false),
                     payment_id = table.Column<int>(nullable: false),
@@ -146,7 +146,7 @@ namespace Bodeguin.Infraestructure.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    active = table.Column<bool>(nullable: false),
+                    is_active = table.Column<bool>(nullable: false),
                     create_at = table.Column<DateTime>(nullable: false),
                     modified_at = table.Column<DateTime>(nullable: false),
                     quantity = table.Column<int>(nullable: false),

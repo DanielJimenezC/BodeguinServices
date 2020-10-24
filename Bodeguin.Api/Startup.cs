@@ -1,12 +1,11 @@
 using System;
 using System.Text;
 using AutoMapper;
-using Bodeguin.Application.Security;
+using Bodeguin.Application.Security.JsonWebToken;
 using Bodeguin.Infraestructure.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -57,15 +56,18 @@ namespace Bodeguin.Api
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.RequireHttpsMetadata = false;
+                var jwtOption = Configuration.GetSection("JwtOptions").Get<JwtOptions>();
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Authentication:SecretKey"]))
+
+                    ValidIssuer = jwtOption.Issuer,
+                    ValidAudience = jwtOption.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JwtOptions:SecretKey"]))
                 };
             });
         }

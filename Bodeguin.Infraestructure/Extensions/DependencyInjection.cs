@@ -1,4 +1,7 @@
-﻿using Bodeguin.Domain.Entity;
+﻿using Bodeguin.Application.Interface;
+using Bodeguin.Application.Security.JsonWebToken;
+using Bodeguin.Application.Service;
+using Bodeguin.Domain.Entity;
 using Bodeguin.Domain.Interface;
 using Bodeguin.Infraestructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +15,7 @@ namespace Bodeguin.Infraestructure.Extensions
     {
         public static void RegisterServices(IServiceCollection services)
         {
+            services.AddScoped<IJWTFactory, JWTFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IRepository<Category, int>, GenericRepository<Category, int>>();
@@ -30,6 +34,8 @@ namespace Bodeguin.Infraestructure.Extensions
             services.AddScoped<IStoreRepository, StoreRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IVoucherRepository, VoucherRepository>();
+
+            services.AddScoped<ILoginService, LoginService>();
         }
     }
 }
