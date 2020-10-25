@@ -31,17 +31,17 @@ namespace Bodeguin.Infraestructure.Configuration
                 .HasColumnName("quantity")
                 .IsRequired();
 
-            builder.Property(d => d.ProductId)
-                .HasColumnName("producto_id")
+            builder.Property(d => d.InventoryId)
+                .HasColumnName("inventory_id")
                 .IsRequired();
 
             builder.Property(d => d.VoucherId)
                 .HasColumnName("voucher_id")
                 .IsRequired();
 
-            builder.HasOne<Product>(d => d.Product)
+            builder.HasOne<Inventory>(d => d.Inventory)
                 .WithMany(d => d.Details)
-                .HasForeignKey(d => d.ProductId);
+                .HasForeignKey(d => d.InventoryId);
 
             builder.HasOne<Voucher>(d => d.Voucher)
                 .WithMany(d => d.Details)

@@ -10,9 +10,9 @@ namespace Bodeguin.Domain.Entity
         public int Discount { get; set; }
         public float Price { get; set; }
         public int Quantity { get; set; }
-        public int ProductId { get; set; }
+        public int InventoryId { get; set; }
         public int VoucherId { get; set; }
-        public Product Product { get; set; }
+        public Inventory Inventory { get; set; }
         public Voucher Voucher { get; set; }
     }
 }

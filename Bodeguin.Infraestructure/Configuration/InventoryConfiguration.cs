@@ -27,6 +27,10 @@ namespace Bodeguin.Infraestructure.Configuration
                 .HasColumnName("price")
                 .IsRequired();
 
+            builder.Property(i => i.MeasureUnit)
+                .HasColumnName("measure_unit")
+                .IsRequired();
+
             builder.Property(i => i.ProductId)
                 .HasColumnName("product_id")
                 .IsRequired();

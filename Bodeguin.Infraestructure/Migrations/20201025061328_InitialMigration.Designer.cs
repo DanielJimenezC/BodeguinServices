@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bodeguin.Infraestructure.Migrations
 {
     [DbContext(typeof(PostgreSqlContext))]
-    [Migration("20201024030818_InitialMigration")]
+    [Migration("20201025061328_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,6 +62,38 @@ namespace Bodeguin.Infraestructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Verduras",
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Verduras",
+                            UrlImage = "https://www.saccosystem.com/public/imgCat2/big/100.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Carnes y Pollos",
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Carnes y Pollos",
+                            UrlImage = "https://images.jumpseller.com/store/eks-delivery/4918843/carnes-int.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Pescados y Mariscos",
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Pescados y Mariscos",
+                            UrlImage = "https://c6f2y5q5.rocketcdn.me/wp-content/uploads/2017/08/proveedores-de-pescado-y-marisco-1280x640.jpg"
+                        });
                 });
 
             modelBuilder.Entity("Bodeguin.Domain.Entity.Detail", b =>
@@ -76,13 +108,13 @@ namespace Bodeguin.Infraestructure.Migrations
                         .HasColumnName("discount")
                         .HasColumnType("integer");
 
+                    b.Property<int>("InventoryId")
+                        .HasColumnName("inventory_id")
+                        .HasColumnType("integer");
+
                     b.Property<float>("Price")
                         .HasColumnName("price")
                         .HasColumnType("real");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnName("producto_id")
-                        .HasColumnType("integer");
 
                     b.Property<int>("Quantity")
                         .HasColumnName("quantity")
@@ -94,7 +126,7 @@ namespace Bodeguin.Infraestructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("InventoryId");
 
                     b.HasIndex("VoucherId");
 
@@ -116,6 +148,10 @@ namespace Bodeguin.Infraestructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnName("is_active")
                         .HasColumnType("boolean");
+
+                    b.Property<int>("MeasureUnit")
+                        .HasColumnName("measure_unit")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("modified_at")
@@ -144,6 +180,92 @@ namespace Bodeguin.Infraestructure.Migrations
                     b.HasIndex("StoreId");
 
                     b.ToTable("Inventories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            MeasureUnit = 3,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Price = 2.5f,
+                            ProductId = 1,
+                            Quantity = 20,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            MeasureUnit = 3,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Price = 2.2f,
+                            ProductId = 1,
+                            Quantity = 18,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            MeasureUnit = 1,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Price = 1.8f,
+                            ProductId = 2,
+                            Quantity = 5,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            MeasureUnit = 1,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Price = 1.5f,
+                            ProductId = 2,
+                            Quantity = 1,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            MeasureUnit = 3,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Price = 8.9f,
+                            ProductId = 3,
+                            Quantity = 12,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            MeasureUnit = 3,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Price = 14.2f,
+                            ProductId = 4,
+                            Quantity = 5,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            MeasureUnit = 3,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Price = 17.8f,
+                            ProductId = 4,
+                            Quantity = 12,
+                            StoreId = 2
+                        });
                 });
 
             modelBuilder.Entity("Bodeguin.Domain.Entity.PaymentType", b =>
@@ -175,6 +297,24 @@ namespace Bodeguin.Infraestructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PaymentTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Efectivo"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Tarjeta de Crédito/Débito"
+                        });
                 });
 
             modelBuilder.Entity("Bodeguin.Domain.Entity.Product", b =>
@@ -224,6 +364,52 @@ namespace Bodeguin.Infraestructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Manzana",
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Manzana",
+                            UrlImage = "https://estaticos.miarevista.es/media/cache/1140x_thumb/uploads/images/article/5e53c4125bafe801dabfb62f/comer-semillas-manzana.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Lechuga",
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Lechuga",
+                            UrlImage = "https://static3.abc.es/media/bienestar/2020/09/01/lechuga-k7y--1024x512@abc.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Pollo",
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Pollo",
+                            UrlImage = "https://www.rebanando.com/cache/slideshow/31/72/02/e6/pollo1.jpg/2cb6823c975ee09b0d93e071c71c86d5.jpg"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 3,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Camarones",
+                            IsActive = true,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Camarones",
+                            UrlImage = "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/imj/elgranchef/C/Camarones-florentinos-3.jpg"
+                        });
                 });
 
             modelBuilder.Entity("Bodeguin.Domain.Entity.Store", b =>
@@ -281,6 +467,34 @@ namespace Bodeguin.Infraestructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Bodega Familiar",
+                            Direction = "Av. Angamos 205",
+                            IsActive = true,
+                            Latitude = -12.113699f,
+                            Longitude = -77.028984f,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Bodeguita Martinez",
+                            Ruc = "20451798452"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Description = "Bodega Familiar",
+                            Direction = "Calle Lizardo Montero 299",
+                            IsActive = true,
+                            Latitude = -12.111534f,
+                            Longitude = -77.02891f,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Don Pedrito",
+                            Ruc = "10684751482"
+                        });
                 });
 
             modelBuilder.Entity("Bodeguin.Domain.Entity.User", b =>
@@ -352,6 +566,23 @@ namespace Bodeguin.Infraestructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Direction = "Calle Ciro Alegria Mz K Lote 20",
+                            Dni = "72183382",
+                            Email = "danieljimenezcanales@gmail.com",
+                            FirstLastName = "Jimenez",
+                            IsActive = true,
+                            IsAdmin = false,
+                            ModifiedAt = new DateTime(2020, 10, 25, 1, 13, 28, 201, DateTimeKind.Local).AddTicks(7396),
+                            Name = "Daniel",
+                            Password = "g2Ix3bIy9j6NrGf7zJm1Mg==",
+                            SecondLastName = "Canales"
+                        });
                 });
 
             modelBuilder.Entity("Bodeguin.Domain.Entity.Voucher", b =>
@@ -393,9 +624,9 @@ namespace Bodeguin.Infraestructure.Migrations
 
             modelBuilder.Entity("Bodeguin.Domain.Entity.Detail", b =>
                 {
-                    b.HasOne("Bodeguin.Domain.Entity.Product", "Product")
+                    b.HasOne("Bodeguin.Domain.Entity.Inventory", "Inventory")
                         .WithMany("Details")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("InventoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

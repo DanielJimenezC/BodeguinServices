@@ -14,6 +14,5 @@ namespace Bodeguin.Domain.Entity
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public IList<Inventory> Inventories { get; set; } = new List<Inventory>();
-        public IList<Detail> Details { get; set; } = new List<Detail>();
     }
 }
