@@ -7,11 +7,11 @@ namespace Bodeguin.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
 
-        public ProductController(IProductService productService)
+        public ProductsController(IProductService productService)
         {
             _productService = productService;
         }
@@ -22,6 +22,14 @@ namespace Bodeguin.Api.Controllers
         public async Task<IActionResult> GetSearchProduct([FromQuery] string search)
         {
             var result = await _productService.GetSearchProduct(search);
+            return new OkObjectResult(result);
+        }
+
+        [Authorize]
+        [HttpGet("{id}/stores")]
+        public async Task<IActionResult> GetStoresByProduct(int id)
+        {
+            var result = await _productService.GetStoreByProduct(id);
             return new OkObjectResult(result);
         }
     }

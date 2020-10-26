@@ -31,5 +31,12 @@ namespace Bodeguin.Application.Service
             var response = _mapper.Map<List<Product>, List<ProductResponse>>(products);
             return new JsonResult<List<ProductResponse>>(true, response, "Success", 0);
         }
+
+        public async Task<JsonResult<List<ProductStoreResponse>>> GetStoreByProduct(int id)
+        {
+            var intentories = await _unitOfWork.InventoryRepository.Find(x => x.ProductId == id && x.IsActive == true).Include(x => x.Store).ToListAsync();
+            var result = _mapper.Map<List<Inventory>, List<ProductStoreResponse>>(intentories);
+            return new JsonResult<List<ProductStoreResponse>>(true, result, "Success", 0);
+        }
     }
 }

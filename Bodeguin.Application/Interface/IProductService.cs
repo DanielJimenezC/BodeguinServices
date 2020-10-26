@@ -10,5 +10,6 @@ namespace Bodeguin.Application.Interface
     public interface IProductService
     {
         Task<JsonResult<List<ProductResponse>>> GetSearchProduct(string search);
+        Task<JsonResult<List<ProductStoreResponse>>> GetStoreByProduct(int id);
     }
 }
