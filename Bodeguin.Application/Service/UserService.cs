@@ -25,7 +25,9 @@ namespace Bodeguin.Application.Service
 
         public async Task<JsonResult<UserResponse>> GetUser(int id)
         {
-            var user = await _unitOfWork.UserRepository.Find(x => x.Id == id).FirstOrDefaultAsync();
+            var user = await _unitOfWork.UserRepository
+                .Find(x => x.Id == id)
+                .FirstOrDefaultAsync();
             if (user is null || user.IsActive == false)
                 return new JsonResult<UserResponse>(false, null, "The user doesn't exist", 1);
             var result = _mapper.Map<User, UserResponse>(user);
@@ -34,7 +36,9 @@ namespace Bodeguin.Application.Service
 
         public async Task<JsonResult<UserResponse>> UpdateUser(int id, UserUpdateRequest userUpdateRequest)
         {
-            var user = await _unitOfWork.UserRepository.Find(x => x.Id == id).FirstOrDefaultAsync();
+            var user = await _unitOfWork.UserRepository
+                .Find(x => x.Id == id)
+                .FirstOrDefaultAsync();
             if (user is null || user.IsActive == false)
                 return new JsonResult<UserResponse>(false, null, "The user doesn't exist", 1);
             var updateUser = _mapper.Map(userUpdateRequest, user);

@@ -5,30 +5,31 @@ using Bodeguin.Application.Interface;
 using Bodeguin.Domain.Entity;
 using Bodeguin.Domain.Interface;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Bodeguin.Application.Service
 {
-    public class CategoryService : ICategoryService
+    public class StoreService : IStoreService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CategoryService(IUnitOfWork unitOfWork, IMapper mapper)
+        public StoreService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<JsonResult<List<CategoryResponse>>> GetCategories()
+        public async Task<JsonResult<List<StoreResponse>>> getStores()
         {
-            var categories = await _unitOfWork.CategoryRepository
+            var stores = await _unitOfWork.StoreRepository
                 .Find(x => x.IsActive == true)
-                .Include(x => x.Products)
                 .ToListAsync();
-            var response = _mapper.Map<List<Category>, List<CategoryResponse>>(categories);
-            return new JsonResult<List<CategoryResponse>>(true, response, "success", 0);
+            var result = _mapper.Map<List<Store>, List<StoreResponse>>(stores);
+            return new JsonResult<List<StoreResponse>>(true, result, "Success", 0);
         }
     }
 }

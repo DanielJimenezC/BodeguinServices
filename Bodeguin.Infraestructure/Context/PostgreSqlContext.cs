@@ -42,8 +42,8 @@ namespace Bodeguin.Infraestructure.Context
                 );
 
             builder.Entity<Store>().HasData(
-                new Store { Id = 1, IsActive = true, CreateAt = date, ModifiedAt = date, Name = "Bodeguita Martinez", Ruc = "20451798452", Latitude = -12.113699f, Longitude = -77.028982f, Direction = "Av. Angamos 205", Description = "Bodega Familiar" },
-                new Store { Id = 2, IsActive = true, CreateAt = date, ModifiedAt = date, Name = "Don Pedrito", Ruc = "10684751482", Latitude = -12.111534f, Longitude = -77.028904f, Direction = "Calle Lizardo Montero 299", Description = "Bodega Familiar" }
+                new Store { Id = 1, IsActive = true, CreateAt = date, ModifiedAt = date, Name = "Bodeguita Martinez", Ruc = "20451798452", Latitude = -12.113699, Longitude = -77.028982, Direction = "Av. Angamos 205", Description = "Bodega Familiar" },
+                new Store { Id = 2, IsActive = true, CreateAt = date, ModifiedAt = date, Name = "Don Pedrito", Ruc = "10684751482", Latitude = -12.111534, Longitude = -77.028904, Direction = "Calle Lizardo Montero 299", Description = "Bodega Familiar" }
                 );
 
             builder.Entity<Inventory>().HasData(

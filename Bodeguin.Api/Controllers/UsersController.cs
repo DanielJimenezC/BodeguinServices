@@ -32,7 +32,7 @@ namespace Bodeguin.Api.Controllers
         }
 
         [Authorize]
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] UserUpdateRequest userUpdateRequest)
         {
             var result = await _userService.UpdateUser(id, userUpdateRequest);

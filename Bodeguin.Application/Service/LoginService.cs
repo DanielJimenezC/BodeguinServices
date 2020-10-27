@@ -31,7 +31,9 @@ namespace Bodeguin.Application.Service
         public async Task<JsonResult<LoginResponse>> SignIn(LoginRequest loginRequest)
         {
             User user = new User();
-            user = await _unitOfWork.UserRepository.Find(x => x.Email.Equals(loginRequest.Email)).FirstOrDefaultAsync();
+            user = await _unitOfWork.UserRepository
+                .Find(x => x.Email.Equals(loginRequest.Email))
+                .FirstOrDefaultAsync();
             string pass = Encript.EncriptText("123456");
             if (user is null || user.IsActive == false)
                 return new JsonResult<LoginResponse>(false, null, "The user doesn't exist", 1);
@@ -45,7 +47,9 @@ namespace Bodeguin.Application.Service
 
         public async Task<JsonResult<LoginResponse>> SignUp(SignUpRequest signUpRequest)
         {
-            var userExist = await _unitOfWork.UserRepository.Find(x => x.Email.Equals(signUpRequest.Email)).ToListAsync();
+            var userExist = await _unitOfWork.UserRepository
+                .Find(x => x.Email.Equals(signUpRequest.Email))
+                .ToListAsync();
             if (userExist.Count > 0)
                 return new JsonResult<LoginResponse>(false, null, "The user already exist", 3);
             var actualTime = DateTime.Now;
