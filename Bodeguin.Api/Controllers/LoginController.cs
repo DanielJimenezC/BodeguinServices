@@ -22,8 +22,6 @@ namespace Bodeguin.Api.Controllers
         public async Task<IActionResult> SignIn([FromBody] LoginRequest loginRequest)
         {
             var result = await _loginService.SignIn(loginRequest);
-            if (!result.Valid)
-                return new NotFoundObjectResult(result);
             return new OkObjectResult(result);
         }
 
@@ -32,8 +30,6 @@ namespace Bodeguin.Api.Controllers
         public async Task<IActionResult> SignUp([FromBody] SignUpRequest signUpRequest)
         {
             var result = await _loginService.SignUp(signUpRequest);
-            if (!result.Valid)
-                return new BadRequestObjectResult(result);
             return new OkObjectResult(result);
         }
     }

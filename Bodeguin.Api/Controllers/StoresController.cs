@@ -22,9 +22,9 @@ namespace Bodeguin.Api.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> getStores()
+        public async Task<IActionResult> GetStores()
         {
-            var result = await _storeService.getStores();
+            var result = await _storeService.GetStores();
             return new OkObjectResult(result);
         }
     }

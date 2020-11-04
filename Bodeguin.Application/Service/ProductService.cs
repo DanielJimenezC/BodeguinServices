@@ -42,6 +42,7 @@ namespace Bodeguin.Application.Service
             var intentories = await _unitOfWork.InventoryRepository
                 .Find(x => x.ProductId == id && x.IsActive == true)
                 .Include(x => x.Store)
+                .Include(x => x.Product)
                 .OrderBy(x => x.Store.Name)
                 .ToListAsync();
             var result = _mapper.Map<List<Inventory>, List<ProductStoreResponse>>(intentories);

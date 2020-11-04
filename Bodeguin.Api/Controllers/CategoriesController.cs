@@ -27,5 +27,13 @@ namespace Bodeguin.Api.Controllers
             var result = await _categoryService.GetCategories();
             return new OkObjectResult(result);
         }
+
+        [Authorize]
+        [HttpGet("{id}/products")]
+        public async Task<IActionResult> GetProductsByCategory(int id)
+        {
+            var result = await _categoryService.GetProductsByCategory(id);
+            return new OkObjectResult(result);
+        }
     }
 }

@@ -26,8 +26,6 @@ namespace Bodeguin.Api.Controllers
         public async Task<IActionResult> getUserById(int id)
         {
             var result = await _userService.GetUser(id);
-            if (!result.Valid)
-                return new BadRequestObjectResult(result);
             return new OkObjectResult(result);
         }
 
@@ -36,8 +34,6 @@ namespace Bodeguin.Api.Controllers
         public async Task<IActionResult> UpdateUser(int id, [FromBody] UserUpdateRequest userUpdateRequest)
         {
             var result = await _userService.UpdateUser(id, userUpdateRequest);
-            if (!result.Valid)
-                return new BadRequestObjectResult(result);
             return new OkObjectResult(result);
         }
     }

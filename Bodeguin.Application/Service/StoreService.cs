@@ -5,9 +5,7 @@ using Bodeguin.Application.Interface;
 using Bodeguin.Domain.Entity;
 using Bodeguin.Domain.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Bodeguin.Application.Service
@@ -23,7 +21,7 @@ namespace Bodeguin.Application.Service
             _mapper = mapper;
         }
 
-        public async Task<JsonResult<List<StoreResponse>>> getStores()
+        public async Task<JsonResult<List<StoreResponse>>> GetStores()
         {
             var stores = await _unitOfWork.StoreRepository
                 .Find(x => x.IsActive == true)

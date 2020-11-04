@@ -7,6 +7,6 @@ namespace Bodeguin.Application.Interface
 {
     public interface IStoreService
     {
-        Task<JsonResult<List<StoreResponse>>> getStores();
+        Task<JsonResult<List<StoreResponse>>> GetStores();
     }
 }
