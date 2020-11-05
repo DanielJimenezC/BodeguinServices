@@ -7,19 +7,41 @@ using Bodeguin.Domain.Entity;
 using Bodeguin.Domain.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Bodeguin.Application.Service
 {
-    public class ShopService : IShopService
+    public class PurchaseService : IPurchaseService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public ShopService(IUnitOfWork unitOfWork, IMapper mapper)
+        public PurchaseService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
+        public async Task<JsonResult<object>> GetDetailShopCart(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<JsonResult<List<Voucher>>> GetShopCart(int userId)
+        {
+            var shopCart = await _unitOfWork.VoucherRepository
+                .Find(x => x.UserId == userId && x.IsActive)
+                .ToListAsync();
+            foreach(var item in shopCart)
+            {
+                var total = await _unitOfWork.DetailRepository
+                    .Find(x => x.VoucherId == item.Id)
+                    .SumAsync(x => (x.Price) * (x.Quantity));
+            }
+            return new JsonResult<List<Voucher>>(true, shopCart, "", 0);
+        }
+
         public async Task<JsonResult<string>> SaveShopCart(ShopCartRequest shopCartRequest)
         {
             var voucher = _mapper.Map<ShopCartRequest, Voucher>(shopCartRequest);

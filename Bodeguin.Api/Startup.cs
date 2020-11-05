@@ -45,6 +45,10 @@ namespace Bodeguin.Api
 
             services.AddSwagger();
 
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             RegisterServices(services);
 
             var jwtOptions = Configuration.GetSection("JwtOptions");

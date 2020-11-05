@@ -40,7 +40,7 @@ namespace Bodeguin.Infraestructure.Extensions
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IStoreService, StoreService>();
-            services.AddScoped<IShopService, ShopService>();
+            services.AddScoped<IPurchaseService, PurchaseService>();
         }
     }
 }

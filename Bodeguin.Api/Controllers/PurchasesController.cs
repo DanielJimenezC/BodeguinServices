@@ -8,11 +8,11 @@ namespace Bodeguin.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ShopsController : ControllerBase
+    public class PurchasesController : ControllerBase
     {
-        private readonly IShopService _shopService;
+        private readonly IPurchaseService _shopService;
 
-        public ShopsController(IShopService shopService)
+        public PurchasesController(IPurchaseService shopService)
         {
             _shopService = shopService;
         }
@@ -22,6 +22,13 @@ namespace Bodeguin.Api.Controllers
         public async Task<IActionResult> AddShopCart([FromBody] ShopCartRequest shopCartRequest)
         {
             var result = await _shopService.SaveShopCart(shopCartRequest);
+            return new OkObjectResult(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetShopCarts(int id)
+        {
+            var result = await _shopService.GetShopCart(id);
             return new OkObjectResult(result);
         }
     }
